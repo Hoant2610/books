@@ -1,8 +1,8 @@
 <!-- Start Header/Navigation -->
-<link href="css/navbar.css" rel="stylesheet">
+<link href="{{asset('css/navbar.css')}}" rel="stylesheet">
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
-	<div class="container">
+	<div class="container nav">
 		<a class="navbar-brand" href="index.html">Furni<span>.</span></a>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,27 +11,40 @@
 
 		<div class="collapse navbar-collapse" id="navbarsFurni">
 			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-				<li class="nav-item active">
-					<a class="nav-link" href="index.html">Home</a>
+				<li class="nav-item tag-home">
+					<a class="nav-link" href="/home">Home</a>
 				</li>
-				<li><a class="nav-link" href="shop.html">Shop</a></li>
+				<li class="tag-book"><a class="nav-link" href="/buyer/books">Shop</a></li>
 				<li><a class="nav-link" href="about.html">About us</a></li>
 				<li><a class="nav-link" href="services.html">Services</a></li>
 				<li><a class="nav-link" href="contact.html">Contact us</a></li>
 			</ul>
 
 			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-				<li >
                       <div class="dropdown-account">
-                        <div style="background-color: #3B5D50; border : solid black 1px;" class="account"> {{$name}} </div>
-                        <div class="dropdown-content">
-                            <a href="#">Profile</a>
-                            <a href="#">Settings</a>
-                            <a>Logout</a>
+                        <div style="background-color: #3B5D50; border : solid black 1px;" class="account"> 
+                            @if(session('name'))
+                                {{ session('name') }}
+                            @endif
                         </div>
-                    </div>
-                </li>                
-				<li><button class="button-cart"><img src="images/cart.svg"></button></li>
+                        <div class="dropdown-content">
+                            <div class="button-option">
+                                <a href="/buyer/account" style="text-align : center;">Profile</a>
+                                <a href="/buyer/orders" style="text-align : center">My Order</a>
+                                <form method="POST" action="{{route('logout')}}">
+                                    @csrf
+                                    <button class="btn-account" >Logout</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>           
+				<li><a href="/cart"><button class="button-cart"><img src="{{asset('images/cart.svg')}}"></button></a>
+                <span>
+                    @if(session()->has('quantityCart'))
+                        <span style="color: #fff">{{ session('quantityCart') }}</span>
+                    @endif
+                </spa>
+            </li>
 			</ul>
 		</div>
 	</div>

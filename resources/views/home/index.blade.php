@@ -21,6 +21,9 @@
 <body>
     @include('home.navbar')
     <br><br><br><br><br><br>
+    <div class="container">
+
+    </div>
     @include('home.footer')
 
     <script src="js/bootstrap.bundle.min.js"></script>

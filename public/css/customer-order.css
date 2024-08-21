@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 28px;
+  color: #000000;
+  font-size: 14px;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #2f2f2f;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ea3636;
+  text-decoration: none;
+}
+
+a.more {
+  font-weight: 600;
+}
+.container-box{
+  display: flex;
+}
+.customer-info{
+  /* background-color: aqua; */
+  flex : 1;
+  min-width: 20%;
+  padding: 10px;
+}
+.customer-email {
+  width: 100%; /* Đảm bảo thẻ chiếm hết chiều rộng của phần tử cha */
+  white-space: nowrap; /* Ngăn text xuống dòng */
+  overflow: hidden; /* Ẩn phần text bị tràn */
+  text-overflow: ellipsis; /* Thêm dấu chấm lửng (...) khi text quá dài */
+  max-width: 200px; /* Giới hạn chiều rộng để tạo hiệu ứng nếu cần */
+}
+
+.order-list{
+  flex: 4;
+  background-color: #cccccc;
+}
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  background-color: #ddd;
+}
+.tab {
+  cursor: pointer;
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  /* margin-right: 5px; */
+  /* background-color: #f7f7f7; */
+  transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
+}
+.tab:hover {
+  background-color: #e0e0e0;
+}
+.tab.active {
+  background-color: #3B5D50;
+  /* border-bottom: 2px solid #fff; */
+  color: #fff;
+}
+.order-section {
+  display: none;
+}
+.order-section.active {
+  display: block;
+}
+.order-list {
+  list-style-type: none;
+  padding: 0;
+}
+.order-list li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.book-info{
+  display: flex;
+  gap: 30px;
+  padding: 15px;
+  width: 100%;
+  position: relative;
+}
+.book-name{
+  width: 450px;
+  /* background-color: #3B5D50; */
+}
+.order-status{
+  position: absolute;
+  right: 20px;
+}
+.order-detail{
+  display: flex;
+  padding: 20px 15px;
+  justify-content: space-between;
+  background-color: #b2b2b2;
+}

@@ -14,10 +14,17 @@ class Address extends Model
         'district',
         'ward',
         'detail',
+        'default',
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function toString(){
+        if (empty($this->detail)) {
+            return "{$this->city}, {$this->district}, {$this->ward}";
+        }
+        return "{$this->city}, {$this->district}, {$this->ward} ({$this->detail})";
     }
 }

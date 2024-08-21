@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductImage extends Model
+class BookImage extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -23,6 +23,6 @@ class ProductImage extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Book::class);
     }
 }

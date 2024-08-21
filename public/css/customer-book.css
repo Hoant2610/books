@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 28px;
+  color: #6a6a6a;
+  font-size: 14px;
+  background-color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  color: #2f2f2f;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #2f2f2f;
+  text-decoration: none;
+}
+
+a.more {
+  font-weight: 600;
+}
+
+.book-container{
+  display: flex;
+}
+.custom-navbar .custom-navbar-nav li.tag-book a {
+  opacity: 1;
+}
+
+.custom-navbar .custom-navbar-nav li.tag-book a:before {
+  width: calc(100% - 16px);
+}
+.filter-box{
+  min-width: 20%;
+  height: 500px;;
+  padding : 10px;
+  border: solid black 1px;
+}
+
+.book-list {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 10px; /* Khoảng cách giữa các sản phẩm */
+}
+
+.book-item {
+  position: relative;
+  flex: 1;
+  min-width: 200px; /* Chiều rộng tối thiểu cho mỗi sản phẩm */
+  max-width: 220px;
+  min-height: 300px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.book-price{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  position : bottom;
+}
+.book-performance{
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  padding : 0px 10px;
+}

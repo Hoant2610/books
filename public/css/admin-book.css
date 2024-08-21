@@ -1,0 +1,28 @@
+.container{
+    position: relative;
+}
+.content{
+    padding-bottom: 100px;
+} 
+.tag-book{
+    background-color: #000000;
+}
+
+
+table {
+    border-collapse: collapse; /* Gộp các đường viền lại */
+}
+table , th, td, tr ,thead{
+    border: solid black 1px;
+}
+.page-link{
+    height: 37px;;
+}
+
+.list-book{
+    /* position: absolute; */
+}
+a{
+    text-decoration: none;
+    cursor: pointer;color: inherit;
+}

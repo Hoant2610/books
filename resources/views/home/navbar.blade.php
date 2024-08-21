@@ -1,5 +1,5 @@
 <!-- Start Header/Navigation -->
-<link href="css/navbar.css" rel="stylesheet">
+<link href="{{asset('css/navbar.css')}}" rel="stylesheet">
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 	<div class="container">
@@ -11,10 +11,10 @@
 
 		<div class="collapse navbar-collapse" id="navbarsFurni">
 			<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-				<li class="nav-item active">
-					<a class="nav-link" href="index.html">Home</a>
+				<li class="nav-item tag-home">
+					<a class="nav-link" href="/">Home</a>
 				</li>
-				<li><a class="nav-link" href="shop.html">Shop</a></li>
+				<li class="tag-book"><a class="nav-link" href="/book">Book</a></li>
 				<li><a class="nav-link" href="about.html">About us</a></li>
 				<li><a class="nav-link" href="services.html">Services</a></li>
 				<li><a class="nav-link" href="contact.html">Contact us</a></li>
@@ -36,9 +36,9 @@
 							<div class="form-login">
 								<h2>Login</h2>
 								<img class="image-label" width="30px;" src="{{ asset('images/email.svg') }}" alt="User Icon" width="46" height="46">
-								<input class="login" name="email" type="text" id="emailLogin" placeholder="Email"><br>
+								<input class="input-login" name="email" type="text" id="emailLogin" placeholder="Email"><br>
 								<img width="30px" src="{{ asset('images/password.svg') }}" alt="User Icon" width="46" height="46">
-								<input name="password" type="password" id="passwordLogin" placeholder="Password"><br>
+								<input class="input-login" name="password" type="password" id="passwordLogin" placeholder="Password"><br>
 								<button type="submit">Login</button><br>
 								<a href="/forgot-password">Forgot password? Click here</a><br>
 							</div>
@@ -56,7 +56,7 @@
 						</form>
 					</div>
 				</div>
-				<li><button class="button-cart"><img src="images/cart.svg"></button></li>
+				<li><button class="button-cart"><img src="{{asset('images/cart.svg')}}"></button></li>
 			</ul>
 		</div>
 	</div>

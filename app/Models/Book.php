@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Product extends Model
+class Book extends Model
 {
     use HasFactory;
+    use Sluggable, SluggableScopeHelpers;
     protected $fillable = [
         'name',
         'original_price',
@@ -19,6 +22,7 @@ class Product extends Model
         'quantity',
         'author',
         'publish',
+        'category_id', 
     ];
 
     public function reviews()
@@ -28,7 +32,7 @@ class Product extends Model
 
     public function images()
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(BookImage::class);
     }
 
     public function category()
@@ -39,5 +43,15 @@ class Product extends Model
     public function order_details()
     {
         return $this->hasMany(OrderDetail::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+                'onUpdate' => true, // Tạo slug mới khi cập nhật
+            ]
+        ];
     }
 }

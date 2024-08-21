@@ -1,0 +1,18 @@
+.container{
+    position: relative;
+}
+.content{
+    padding-bottom: 100px;
+} 
+.tag-category{
+    background-color: #000000;
+}
+.id{
+    width: 100px;;
+}
+.name{
+    width: 500px;
+}
+.table{
+    width: 800px;
+}

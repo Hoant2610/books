@@ -1,0 +1,151 @@
+.container{
+    position: relative;
+}
+.content{
+    /* padding-bottom: 100px; */
+} 
+.tag-book{
+    background-color: #000000;
+}
+.book-detail{
+    width: 100%;
+    /* background-color: blue; */
+}
+.book-top{
+    display: flex;
+    padding : 10px;
+    gap: 20px;
+}
+.book-image{
+    width: 30%;
+    /* background-color: aqua; */
+}
+.gallery{
+    width: 100px;
+}
+.book-info{
+    width: 70%;
+    /* background-color: rgb(235, 239, 18); */
+}
+.book-description{
+    min-width: 90%;
+    /* padding : 10px; */
+    /* background-color: rgb(232, 56, 56); */
+}
+
+/*  */
+/* CSS cho modal */
+#imageModal ,#thumbnailModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.gallery {
+    max-width: 150px;
+    max-height: 150px;
+    border: solid black 1px;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#imageModal input[type="file"] {
+    margin-top: 20px;
+}
+#thumbnailModal input[type="file"] {
+    margin-top: 20px;
+}
+.image-wrapper{
+    border: solid black 1px;
+}
+#imgs {
+    /* position: fixed; Giữ cố định vị trí của container */
+    top: 10px; /* Điều chỉnh vị trí trên trang */
+    left: 10px; /* Điều chỉnh vị trí trên trang */
+    width: 1000px; /* Chiều rộng cố định của container */
+    height: 300px; /* Chiều cao cố định của container */
+    overflow-y: auto; /* Thêm thanh cuộn dọc khi nội dung vượt quá chiều cao */
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+    border: 1px solid #ccc; /* Thêm viền để dễ nhận biết */
+    padding: 10px; /* Thêm khoảng cách bên trong */
+    background-color: white; /* Màu nền của container */
+}
+
+.item{
+    width: 110px;
+    height: 110px;
+    margin: 5px;
+    cursor: pointer;
+    border: solid black 1px;
+}
+.active{
+    border: 2px solid #007bff; /* Viền màu xanh cho ảnh được chọn */
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+.imageContainer{
+    border: solid black 1px;
+}
+.img-container {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+}
+
+.img-container img {
+    display: block;
+}
+
+.img-container .delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgb(255, 103, 103);
+    color: white;
+    border: none;
+    /* border-radius: 50%; */
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    cursor: auto;
+}
+.delete-btn:hover{
+    background-color: rgb(255, 23, 23);
+}
+.book-info {
+    display: flex; /* Sử dụng Flexbox */
+    flex-wrap: wrap; /* Cho phép phần tử cuộn xuống nếu cần */
+    border: solid black .5px;
+}
+
+.book-info > div {
+    flex: 1 1 calc(33.333% - 20px); /* 33.333% width cho ba phần tử, trừ khoảng cách */
+    margin: 10px; /* Khoảng cách giữa các phần tử */
+    box-sizing: border-box; /* Đảm bảo padding và border không vượt quá width */
+}
+
+/* Điều chỉnh cho màn hình nhỏ hơn */
+@media (max-width: 768px) {
+    .book-info > div {
+        flex: 1 1 100%; /* Đặt 100% width cho màn hình nhỏ hơn */
+    }
+}

@@ -14,12 +14,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="css/tiny-slider.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/customer-home.css" rel="stylesheet">
     <title>Book shop</title>
 </head>
 
 <body>
-    @include('customer.navbar',['name'=>$name])
+    @include('customer.navbar')
     <br><br><br><br><br><br>
     @include('home.footer')
 
@@ -28,17 +28,4 @@
     <script src="js/custom.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
-
-<script>
-    function openLoginForm() {
-        $('#loginModal').show();
-    }
-
-    function closeLoginForm() {
-        $('#loginModal').hide();
-    }
-    
-
-</script>
-
 </html>

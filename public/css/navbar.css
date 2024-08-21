@@ -1,12 +1,11 @@
 .custom-navbar {
-
-  position: fixed;
+  /* position: sticky ; */
   top: 0;
   z-index: 999;
   width: 100%;
   background: #3b5d50 !important;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .custom-navbar .navbar-brand {
@@ -86,6 +85,7 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -109,9 +109,9 @@
   z-index: 2000;
   /* Ensure modal is on top of navbar */
   left: 50%;
-  /* top: 20%; */
+  top: 10%;
   transform: translate(-50%);
-  width: 50%;
+  width: 30em;
   /* Full width */
   overflow: auto;
   /* Enable scroll if needed */
@@ -167,7 +167,7 @@
 /* Style for each dropdown link */
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  /* padding: 12px 16px; */
   text-decoration: none;
   display: block;
 }
@@ -182,4 +182,33 @@
   cursor: pointer;
   padding: 10px;
   background-color: #ddd;
+}
+
+.button-option{
+  display: flex;
+  flex-direction: column;
+}
+.btn-account{
+  border: none;
+  width: 100%;
+}
+.btn-account:hover{
+  background-color: #c6c6c6;
+}
+.input-login{
+  min-width: 85%;
+}
+.button-account,
+.button-cart {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  /* padding: 0; */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: pointer;
 }

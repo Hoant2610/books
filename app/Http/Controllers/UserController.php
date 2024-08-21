@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Services\CartService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
@@ -12,24 +14,27 @@ use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
+    private CartService $cartService;
+    public function __construct(CartService $cartService){
+        $this->cartService = $cartService;
+    }
     public function login(Request $request){
         try{
             $credentials = $request->only('email', 'password');
-            // dd($credentials);
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-
-            if($user->role == "customer"){
-                return redirect()->route('customer-home');
-            }
+            session()->put('name',$user->name);
             if($user->role == "admin"){
-                return view('admin.dashboard');
+                return redirect()->route('admin-home');    
             }
-
+            if($user->role == "customer"){
+                session()->put('quantityCart',$this->cartService->getQuantityBook());
+                return redirect()->route('customer-home');    
+            }
         }
-        else{
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
+        return back()->withErrors([
+            'error' => 'Thông tin đăng nhập không chính xác.',
+        ])->withInput($request->only('email'));
         }
         catch(Exception $e){
             return response()->json(['error'=>$e]);
@@ -74,16 +79,17 @@ class UserController extends Controller
     }
 
     public function logout(Request $request){
+        // Lưu lại giỏ hàng hiện tại vào một biến tạm thời
+        $cart = $request->session()->get('cart');
         Cookie::queue(Cookie::forget('access_token'));
         // Cookie::queue(Cookie::forget('name'));
-        // Đăng xuất người dùng
+
         Auth::logout();
 
         // Xóa session của người dùng (nếu có)
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-
-        // Chuyển hướng người dùng đến trang đăng nhập (hoặc trang nào đó)
-        return redirect('/login');
+        // $request->session()->put('cart', $cart);
+        return redirect('/');
     }
 }
