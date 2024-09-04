@@ -117,4 +117,14 @@ a.more {
   padding: 20px 15px;
   justify-content: space-between;
   background-color: #b2b2b2;
+  min-width: 90%;
+}
+.cancel{
+  display: flex;
+  padding: 20px 15px;
+  /* justify-content: center;
+  align-items: center;
+  text-align: center; */
+  background-color: #b2b2b2;
+  min-width: 10%;
 }

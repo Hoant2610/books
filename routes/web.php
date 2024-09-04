@@ -1,18 +1,19 @@
 <?php
 
 use App\DTOs\customer\Test;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Customer\OrderController;
+use App\Http\Controllers\Customer\AddressController;
 use App\Http\Controllers\Customer\CheckoutController;
 use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Customer\AccountController as CustomerAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,18 +44,22 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/checkout', [CheckoutController::class,"checkout"])->name('checkout');
         Route::post('/order', [OrderController::class,"createOrder"]);
         Route::get('/buyer/orders', [OrderController::class,"showOrdersView"]);
-        // Route::get('/buyer/orders', [OrderController::class,"getOrdersByUserIdAndStatus"]);
+        Route::get('/buyer/account', [CustomerAccountController::class,"showViewProfile"]);
+        Route::put('/buyer/account', [CustomerAccountController::class,"updateAccount"]);
+        Route::put('/buyer/password', [CustomerAccountController::class,"changePassword"]);
+        Route::get('buyer/address', [AddressController::class,"getAddressById"]);
+        Route::delete('buyer/address', [AddressController::class,"deleteAddress"]);
+        Route::put('buyer/address', [AddressController::class,"editAddress"]);
+        Route::post('buyer/address', [AddressController::class,"addNewAddress"]);
     });
 
     Route::prefix('admin')->group(function () {
         Route::middleware(['role:admin'])->group(function () {
             Route::get('/dashboard', function () {
-                // $user = Auth::user();
-                // $token = $user->createToken('Personal access token')->accessToken;
-                // $cookie = cookie('access_token', $token, 60 * 24);
                 return view('admin.dashboard');
             })->name('admin-home');
-            Route::get('/books', [AccountController::class,"viewAccounts"]);
+            Route::get('/accounts', [AccountController::class,"viewAccounts"]);
+            Route::get('/account/detail/id={user_id}', [AccountController::class,"viewAccountDetail"]);
             Route::get('/books', [BookController::class,"viewBooks"]);
             Route::post('/book', [BookController::class,"createBook"]);
             Route::get('/book/create-book', [BookController::class,"viewCreateBook"]);
@@ -67,6 +72,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/imgs',[BookController::class,'getImgs']);
             Route::post('/upload-image',[BookController::class,'uploadImage']);
             Route::post('/change-thumbnail',[BookController::class,'changeThumbnail']);
+            Route::get('/order', [OrderController::class,'showOrderView']);
         });
     });
 });
+Route::get('/order', [OrderController::class,'showOrderView']);

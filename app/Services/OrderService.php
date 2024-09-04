@@ -67,4 +67,7 @@ class OrderService
     public function getOrdersByUserIdAndStatus($user_id,$status){
         return $this->orderRepository->getOrdersByUserIdAndStatus($user_id,$status);
     }
+    public function getAllOrderDetail(){
+        return $this->orderDetailRepository->getAllOrderDetail();
+    }
 }

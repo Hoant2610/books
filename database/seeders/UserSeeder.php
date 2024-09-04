@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        // for($i = 0 ; $i < 10; $i++){
+        for($i = 0 ; $i < 10; $i++){
             DB::table('users')->insert([
                 'name' => $faker->name,
                 'email' => $faker->email,
@@ -28,6 +28,6 @@ class UserSeeder extends Seeder
                 'created_at'=> now(),
                 'updated_at'=> now(),
             ]);
-        // }
+        }
     }
 }

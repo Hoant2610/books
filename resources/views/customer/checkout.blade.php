@@ -35,6 +35,7 @@
                     {{-- <span>{{$bookCheckoutDTO->getUser()->phone}}</span> --}}
                     <input id="user-phone" value="{{$bookCheckoutDTO->getUser()->phone}}">
                 </div>
+                @if($bookCheckoutDTO->getAddressDefault()->exists)
                 <div class="address-current">
                     <div class="address-selected">
                         <span>{{$bookCheckoutDTO->getAddressDefault()->city}}</span>, 
@@ -72,6 +73,10 @@
                     </div>
                 </div>
                 <button onclick="openAddressBox()">Change</button>
+                @else
+                <p>No address found.</p>
+                <button>Add new address</button>
+                @endif
             </div><hr>
             <div class="books">
                 @foreach($bookCheckoutDTO->getBookCartDTOs() as $item)

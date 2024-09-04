@@ -14,11 +14,15 @@ class OrderDetailRepository
                 'order_id'=>$order_id,
                 'quantity'=>$quantity,
                 'current_original_price'=>$current_original_price,
-                'current_sale_price'=>$current_sale_price
+                'current_sale_price'=>$current_sale_price,
+                'status' => '1'
             ]);
         }
         catch(Exception $e){
             throw new Exception('Failed to create OrderDetail: ' . $e->getMessage());
         }
+    }
+    public function getAllOrderDetail(){
+        return OrderDetail::paginate(1);
     }
 }

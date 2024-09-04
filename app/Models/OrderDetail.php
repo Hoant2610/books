@@ -15,6 +15,7 @@ class OrderDetail extends Model
         'quantity',
         'current_original_price',
         'current_sale_price',
+        'status'
     ];
 
     public function order()

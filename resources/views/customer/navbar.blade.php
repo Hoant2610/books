@@ -39,11 +39,6 @@
                         </div>
                     </div>           
 				<li><a href="/cart"><button class="button-cart"><img src="{{asset('images/cart.svg')}}"></button></a>
-                <span>
-                    @if(session()->has('quantityCart'))
-                        <span style="color: #fff">{{ session('quantityCart') }}</span>
-                    @endif
-                </spa>
             </li>
 			</ul>
 		</div>

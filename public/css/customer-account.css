@@ -1,0 +1,78 @@
+body {
+    background: rgb(216, 216, 216)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+table {
+    border-collapse: collapse; /* Gộp các đường viền lại */
+}
+table , th, td, tr ,thead{
+    border: solid black 1px;
+}
+th ,td {
+    padding : 5px;
+}
+.form-address,.form-edit-address,.change-pass {
+    display: none; /* Ẩn mặc định */
+    position: fixed; /* Vị trí cố định */
+    top: 50%; /* Căn giữa theo chiều dọc */
+    left: 50%; /* Căn giữa theo chiều ngang */
+    transform: translate(-50%, -50%); /* Căn giữa hoàn toàn */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Đưa modal lên trên cùng */
+    width: 400px;
+}
+
+/* Mờ nền khi modal hiển thị */
+.modal-overlay {
+    display: none; /* Ẩn mặc định */
+    position: fixed; /* Vị trí cố định */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Mờ nền */
+    z-index: 999; /* Đưa overlay lên trên */
+}

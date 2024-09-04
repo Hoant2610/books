@@ -46,12 +46,12 @@
                 <!-- Tabs cho các mục đơn hàng -->
                 <div class="tabs">
                     <div class="tab active" data-tab="all">All</div>
-                    <div class="tab" onclick="showOrderByStatus()" data-tab="waiting-for-confirmation">Chờ xác nhận</div>
-                    <div class="tab" data-tab="waiting-for-delivery">Chờ giao hàng</div>
-                    <div class="tab" data-tab="delivered">Đã nhận</div>
-                    <div class="tab" data-tab="completed">Đã giao xong</div>
-                    <div class="tab" data-tab="returned">Trả hàng</div>
-                    <div class="tab" data-tab="cancelled">Đã hủy</div>
+                    <div class="tab" onclick="showOrderByStatus()" data-tab="waiting-for-confirmation">To Pay</div>
+                    <div class="tab" data-tab="waiting-for-delivery">To Ship</div>
+                    <div class="tab" data-tab="delivered">To Receive</div>
+                    <div class="tab" data-tab="completed">Completed</div>
+                    <div class="tab" data-tab="returned">Return Refund</div>
+                    <div class="tab" data-tab="cancelled">Canceled</div>
                 </div>
 
                 <!-- Phần All -->
@@ -137,18 +137,25 @@
                                     <div class="order-status">
                                         <label>Status : </label>
                                         <span>{{$order_detail->status}}</span>
+                                    </div>        
+                                </div>
+
+                                <div style="display: flex;justify-content : space-between">
+                                    <div class="order-detail">
+                                        <div class="order-time">
+                                            <label>Order placed : </label>
+                                            <span>{{$order_detail->created_at->format('d-m-Y H:i:s')}}</span>
+                                        </div>
+                                        <div class="totalPrice">
+                                            <label>Order Total : </label>
+                                            <span><b>{{number_format($order_detail->current_sale_price * $order_detail->quantity, 0, ',', '.')}} ₫</b></span>&nbsp;&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+                                    <div class="cancel">
+                                        <button onclick="cancelOrder({{$order_detail->id}})">Cancel</button>
                                     </div>
                                 </div>
-                                <div class="order-detail">
-                                    <div class="order-time">
-                                        <label>Order placed : </label>
-                                        <span>{{$order_detail->created_at->format('d-m-Y H:i:s')}}</span>
-                                    </div>
-                                    <div class="totalPrice">
-                                        <label>Order Total : </label>
-                                        <span><b>{{number_format($order_detail->current_sale_price * $order_detail->quantity, 0, ',', '.')}} ₫</b></span>&nbsp;&nbsp;&nbsp;
-                                    </div>
-                                </div>
+                                
                             </li>
                             @endif
                             @endforeach
@@ -439,6 +446,10 @@
     function showOrderByStatus() {
         var orders = @json($orders);
         console.log(orders)
+    }
+
+    function cancelOrder(order_detail_id){
+        
     }
 
 </script>

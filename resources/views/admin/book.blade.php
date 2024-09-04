@@ -33,7 +33,7 @@
                     <tbody>
                         @foreach($books as $book)
                         <tr>
-                            <td><img src="{{$book->getBook()->thumbnail}}"></td>
+                            <td><img width="50px" height="50px" src="{{ asset($book->getBook()->thumbnail) }}" alt=""></td>
                             <td>{{$book->getBook()->id}}</td>
                             <td>{{$book->getBook()->category->name}}</td>
                             <td>{{$book->getBook()->name}}</td>

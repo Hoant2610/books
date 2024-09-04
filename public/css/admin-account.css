@@ -4,7 +4,7 @@
 .content{
     padding-bottom: 100px;
 } 
-.tag-book{
+.tag-account{
     background-color: #000000;
 }
 
@@ -17,12 +17,4 @@ table , th, td, tr ,thead{
 }
 .page-link{
     height: 30px;;
-}
-
-.list-book{
-    /* position: absolute; */
-}
-a{
-    text-decoration: none;
-    cursor: pointer;color: inherit;
 }

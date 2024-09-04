@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>List book</title>
+    <title>List account</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/admin-account.css') }}">
+    <style>
+        .page-link{
+            height: 30px;;
+        }
+    </style>
 </head>
 <body>
     <section class="container">
@@ -14,42 +19,37 @@
             @include('admin.component.slidebar')
         </div>
         <div class="content">
-            <h1>List book</h1>
-            @include('admin.component.search-book')
-            @if($books->count() > 0)
+            <h1>List account</h1>
+            @if($accounts->count() > 0)
             <div class="list-book">
                 <table class="table table-striped table-class" id="table-id">
                     <thead>
                         <tr>
-                            <th></th>
                             <th>ID</th>
-                            <th>Category</th>
+                            <th>Email</th>
                             <th>Name</th>
-                            <th>Inventory</th>
+                            <th>Phone</th>
                             <th>Status</td>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($books as $book)
+                        @foreach($accounts as $account)
                         <tr>
-                            <td><img src="{{$book->getBook()->thumbnail}}"></td>
-                            <td>{{$book->getBook()->id}}</td>
-                            <td>{{$book->getBook()->category->name}}</td>
-                            <td>{{$book->getBook()->name}}</td>
-                            <td>{{$book->getBook()->quantity}}</td>
-                            <td>{{$book->getBook()->status}}</td>
-                            <td>
-                                <a style="text-decoration: none;cursor: pointer;color: inherit;" href="/admin/books/{{$book->getBook()->slug}}"><button>Detail</button></a>
-                            </td>
+                            <td>{{$account->id}}</td>
+                            <td>{{$account->email}}</td>
+                            <td>{{$account->name}}</td>
+                            <td>{{$account->phone}}</td>
+                            <td>{{$account->status}}</td>
+                            <td><a href="/admin/account/detail/id={{$account->id}}">Detail</a></td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            {{ $books->appends(['key' => request('key')])->onEachSide(1)->links() }}
+            {{ $accounts->onEachSide(1)->links() }}
             @else
-            <p>No books found.</p>
+            <p>No accounts found.</p>
             @endif
         </div>
     </section>

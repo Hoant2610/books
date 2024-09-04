@@ -41,7 +41,7 @@
                 </a>
 
             </li>
-            <li class="has-subnav">
+            <li class="tag-order">
                 <a href="/admin/order">
                     <i class="fa-solid fa-clipboard-list fa fa-2x"></i>
                     <span class="nav-text">

@@ -26,11 +26,17 @@ class OrderRepository
     }
 
     public function getOrdersByUserId($user_id){
-        return Order::where('user_id',$user_id)->get();
+        return Order::where('user_id', $user_id)
+             ->orderBy('created_at', 'desc') // Sắp xếp theo 'created_at' theo thứ tự giảm dần
+             ->get();
+
     }
     public function getOrdersByUserIdAndStatus($user_id,$status){
         return Order::where('user_id',$user_id)
                     ->where('status',$status)        
                     ->get();
+    }
+    public function getAllOrder(){
+        return Order::paginate(1);
     }
 }

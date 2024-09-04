@@ -10,13 +10,17 @@ class Address extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'city',
         'district',
         'ward',
+        'city_code',
+        'district_code',
+        'ward_code',
         'detail',
         'default',
     ];
-
+    public $timestamps = false;
     public function user()
     {
         return $this->belongsTo(User::class);
