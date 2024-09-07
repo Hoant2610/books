@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ChatService;
 use App\Services\UserService;
+use App\Events\MessageAdminSent;
+use App\Events\MessageCustomerSent;
 use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
@@ -16,6 +18,13 @@ class ChatController extends Controller
     }
     public function viewChat(){
         return view('admin.chat')->with('customers',$this->chatService->getUserChatDTO());
+    }
+    public function getUserChatDTOs(){
+        $user = Auth::user();
+        if($user->role == 'admin'){
+            return response()->json(['customers'=>$this->chatService->getUserChatDTO()]);
+        }
+        return response()->json(['error'=>'Unauthorized '],401);
     }
     public function getCustomerConversation(){
         $user = Auth::user();
@@ -33,7 +42,9 @@ class ChatController extends Controller
         $message = $request->message;
         $user = Auth::user();
         if($user->role == 'admin'){
-            $message =  $this->chatService->addAdminMessage($user->id,$message);
+            $message =  $this->chatService->addAdminMessage($request->user_id,$message);
+            // Phát sự kiện
+            broadcast(new MessageAdminSent($message,$request->user_id));
             return response()->json(['message'=>$message],200);
         }
         return response()->json(['error'=>'Unauthorized '],401);
@@ -43,6 +54,8 @@ class ChatController extends Controller
         $user = Auth::user();
         if($user->role == 'customer'){
             $message =  $this->chatService->addCustomerMessage($user->id,$message);
+            // Phát sự kiện
+            broadcast(new MessageCustomerSent($message,$user->id));
             return response()->json(['message'=>$message],200);
         }
         return response()->json(['error'=>'Unauthorized '],401);

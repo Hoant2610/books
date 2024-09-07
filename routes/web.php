@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Broadcast;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AccountController;
@@ -55,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('buyer/chat', [ChatController::class,"addCustomerMessage"]);
         Route::get('buyer/chat', [ChatController::class,"getCustomerConversation"]);
     });
-
+    // Broadcast::routes();
     Route::prefix('admin')->group(function () {
         Route::middleware(['role:admin'])->group(function () {
             Route::get('/dashboard', function () {
@@ -79,7 +80,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/chat', [ChatController::class,"addAdminMessage"]);
             Route::get('/chat', [ChatController::class,"viewChat"]);
             Route::get('/conversation', [ChatController::class,"getCustomerConversationByUserId"]);
+            Route::get('/conversations', [ChatController::class,"getUserChatDTOs"]);
         });
     });
 });
-// Route::get('/order', [OrderController::class,'showOrderView']);
+Broadcast::routes(['middleware' => ['auth']]);

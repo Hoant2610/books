@@ -1,3 +1,5 @@
+
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
@@ -153,6 +155,9 @@
     }
 </style>
 <div class="icon-chat"><button onclick="openBoxChat()">Icon chat</button></div>
+<!-- resources/views/your-view.blade.php -->
+<input type="hidden" id="user-id" value="{{ session('user_id') }}">
+
 <div id="box-chat" class="box-chat" style="display: ;">
     <div class="container d-flex justify-content-center">
         <div class="card mt-5">
@@ -174,6 +179,48 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+
+<script>
+    function formatTime(dateString) {
+        // Tạo đối tượng Date từ chuỗi ngày giờ
+        let date = new Date(dateString);
+
+        // Lấy giờ và phút
+        let hours = date.getHours().toString().padStart(2, '0');
+        let minutes = date.getMinutes().toString().padStart(2, '0');
+
+        // Trả về định dạng hh:mm
+        return `${hours}:${minutes}`;
+    }
+
+    const userId = {{session('user_id')}}; // Thay bằng user ID của bạn
+
+    // Pusher.logToConsole = true;
+
+    var pusher = new Pusher('c3f52ecef8384878cf2f', {
+        cluster: 'ap1',
+        authEndpoint: `/broadcasting/auth`
+    });
+    var channel = pusher.subscribe('private-customer.' + userId);
+    // console.log(channel)
+    channel.bind('send-to-customer', function(data) {
+        console.log(data.message);
+        var newChat = `
+                    <div class="d-flex flex-row ">
+                        <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-7.png" width="40" height="40">
+                        <div class="chat">
+                            <div class="message-text">${data.message.message}</div>
+                            <div class="time">${formatTime(data.message.created_at)}</div>
+                        </div>
+                    </div>
+        `
+        $('.content').append(newChat)
+        $('.content').scrollTop($('.content')[0].scrollHeight);
+    });
+
+
+</script>
 <script>
     function formatTime(dateString) {
         // Tạo đối tượng Date từ chuỗi ngày giờ
@@ -193,7 +240,6 @@
             type : 'GET',
             success : function(response){
                 response.forEach(function(item) {
-                    console.log(item)
                 if(item.sender_id == 0){
                     // Tạo một thẻ HTML mới và chèn nội dung từ item
                     let newElement = `
@@ -243,6 +289,9 @@
     function sendMessage(){
         var message = $('#message').val().trim()
         $('#message').val('');
+        if(!message){
+            return;
+        }
         $.ajax({
             url : '/buyer/chat',
             type : 'POST',

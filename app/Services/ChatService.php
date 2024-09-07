@@ -35,7 +35,7 @@ class ChatService
             $conversation = Conversation::where('user_id',$user_id)->first();
             if($conversation){
                 $message_nearest = Message::where('conversation_id', $conversation->id)
-                                        ->orderBy('created_at', 'asc')
+                                        ->orderBy('created_at', 'desc')
                                         ->first();
                 $sender_name = '';
                 if($message_nearest->sender_id == 0){

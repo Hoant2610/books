@@ -450,15 +450,17 @@ ul {
     overflow: hidden; /* Ẩn thanh cuộn */
     resize: none;     /* Ngăn việc thay đổi kích thước bằng tay */
 }
-.chat-text{
-    display: flex;
-    flex-direction: column;
+.chat-text-left{
+    color : #fff;align-self: flex-start;border-radius: 20px;background-color : #339bfc;
     font-size: 1.8rem;;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: rgb(213, 135, 135);
-    border-radius: 20px;
-    max-width: 70%;
+    padding : 10px;
+    max-width: 70%;;
+}
+.chat-text-right{
+    color : #fff;align-self: flex-end;border-radius: 20px;background-color : #339bfc;
+    font-size: 1.8rem;;
+    padding : 10px;
+    max-width: 70%;;
 }
 .chat-left{
     width: 100%;
@@ -474,7 +476,35 @@ ul {
     display: flex; /* Sử dụng flexbox để căn chỉnh nội dung */
     justify-content: flex-end; /* Căn chỉnh các phần tử con về phía bên phải */
     margin-bottom: 10px;
+    align-self: flex-end;
 }
 .conversation{
     height: 100%;
+}
+
+
+.chat-time {
+    /* background-color: red; */
+    font-size: 12px; /* Kích thước chữ nhỏ hơn cho thời gian */
+    color: #999; /* Màu sắc mờ hơn cho thời gian */
+    margin-top: 5px; /* Khoảng cách trên giữa tin nhắn và thời gian */
+     /* Đặt thời gian ở dưới, bên phải của tin nhắn */
+}
+button {
+    position: absolute; /* Thiết lập vị trí tuyệt đối cho textarea */
+    bottom: 20%;          /* Đặt textarea ở dưới cùng của thẻ cha */
+    right: 10px;            /* Đặt ở phía bên trái của thẻ cha */
+    box-sizing: border-box;
+    padding: 10px 15px; /* Padding cho nút */
+    font-size: 1.6rem; /* Kích thước chữ của nút */
+    color: #fff; /* Màu chữ của nút */
+    background-color: #007bff; /* Màu nền của nút (thay đổi theo ý bạn) */
+    border: none; /* Loại bỏ viền của nút */
+    border-radius: 5px; /* Bo tròn góc của nút */
+    cursor: pointer; /* Thay đổi con trỏ khi di chuột qua nút */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền khi hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Màu nền khi hover (thay đổi theo ý bạn) */
 }

@@ -24,6 +24,7 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             session()->put('name',$user->name);
+            session()->put('user_id',$user->id);
             if($user->role == "admin"){
                 return redirect()->route('admin-home');    
             }

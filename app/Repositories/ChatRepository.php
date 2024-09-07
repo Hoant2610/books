@@ -52,7 +52,7 @@ class ChatRepository
             $conversation->save();
             $messageModel = new Message();
             $messageModel->conversation_id = $conversation->id;
-            $messageModel->sender_id = $user_id;
+            $messageModel->sender_id = 0;
             $messageModel->message = $message;
             $messageModel->save();
             return $messageModel;
