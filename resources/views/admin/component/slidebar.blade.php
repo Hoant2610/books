@@ -75,10 +75,10 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-map-marker fa-2x"></i>
+                <a href="/admin/chat">
+                    <i class="fa-solid fa-comments fa fa-2x"></i>
                     <span class="nav-text">
-                        Member Map
+                        Chat
                     </span>
                 </a>
             </li>

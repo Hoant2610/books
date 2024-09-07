@@ -3,6 +3,7 @@
 use App\DTOs\customer\Test;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\BookController;
@@ -51,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('buyer/address', [AddressController::class,"deleteAddress"]);
         Route::put('buyer/address', [AddressController::class,"editAddress"]);
         Route::post('buyer/address', [AddressController::class,"addNewAddress"]);
+        Route::post('buyer/chat', [ChatController::class,"addCustomerMessage"]);
+        Route::get('buyer/chat', [ChatController::class,"getCustomerConversation"]);
     });
 
     Route::prefix('admin')->group(function () {
@@ -73,7 +76,10 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/upload-image',[BookController::class,'uploadImage']);
             Route::post('/change-thumbnail',[BookController::class,'changeThumbnail']);
             Route::get('/order', [OrderController::class,'showOrderView']);
+            Route::post('/chat', [ChatController::class,"addAdminMessage"]);
+            Route::get('/chat', [ChatController::class,"viewChat"]);
+            Route::get('/conversation', [ChatController::class,"getCustomerConversationByUserId"]);
         });
     });
 });
-Route::get('/order', [OrderController::class,'showOrderView']);
+// Route::get('/order', [OrderController::class,'showOrderView']);

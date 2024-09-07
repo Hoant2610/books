@@ -40,6 +40,7 @@
                     </div>           
 				<li><a href="/cart"><button class="button-cart"><img src="{{asset('images/cart.svg')}}"></button></a>
             </li>
+            <li>@include('customer.component.chat')</li>
 			</ul>
 		</div>
 	</div>
