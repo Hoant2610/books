@@ -2,13 +2,79 @@ body{
     padding: 0;
     margin: 0;
 }
-.container{
-    display: flex;
-    background-color: aquamarine;
-}
-.content{
-    margin-left: 60px;;
-}
 .tag-home{
     background-color: #000000;
+}
+/* Tổng thể */
+.product-categories {
+  display: flex;
+  justify-content: space-around; /* Canh đều khoảng cách giữa các danh mục */
+  flex-wrap: wrap; /* Cho phép các danh mục tự động xuống dòng nếu không đủ chỗ */
+  gap: 10px; /* Khoảng cách giữa các danh mục */
+  padding: 20px;
+}
+
+/* Phong cách cho từng danh mục */
+.category {
+  flex: 1 1 calc(20% - 20px);
+  position: relative;
+  /* width: 210px; */
+  overflow: hidden;
+  transition: transform 0.3s ease; /* Hiệu ứng di chuyển khi hover */
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Bóng cho các danh mục */
+}
+
+/* Hiệu ứng hover */
+.category:hover {
+  transform: translateY(-10px); /* Dịch lên trên khi hover */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* Tăng bóng khi hover */
+}
+
+/* Hình ảnh của danh mục */
+.category img {
+  width: 100%; /* Đặt hình ảnh phủ toàn bộ diện tích danh mục */
+  height: auto;
+  transition: transform 0.3s ease; /* Hiệu ứng phóng to ảnh khi hover */
+}
+
+/* Phóng to ảnh khi hover */
+.category:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay chứa tên danh mục */
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6); /* Nền trong suốt */
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hiệu ứng hiện overlay khi hover */
+.category:hover .overlay {
+  opacity: 1;
+}
+
+/* Số lượng sản phẩm */
+.product-quantity {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.8); /* Nền trắng mờ */
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.chart-custom{
+  border: solid rgba(0, 0, 0, 0.338) 1px;
+  padding: 5px;
 }

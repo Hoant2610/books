@@ -3,7 +3,7 @@
 <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 	<div class="container">
-		<a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+		<a class="navbar-brand" href="index.html">BookShop<span>.</span></a>
 
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -21,10 +21,10 @@
 			</ul>
 
 			<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-				<li><button class="button-account" onclick="openLoginForm()"><img src="images/user.svg"></button>
+				<li><a href="/login"><button class="button-account"><img src="images/user.svg"></button></a>
 				</li>
 				<!-- Modal -->
-				<div id="loginModal" class="modal-login">
+				{{-- <div id="loginModal" class="modal-login">
 					<div class="modal-content">
 						<button class="button-close" onclick="closeLoginForm()" class="close">Close</button >
 						<div class="login-register">
@@ -55,7 +55,7 @@
 							<input type="button" onclick="submitForm()" value="Register">
 						</form>
 					</div>
-				</div>
+				</div> --}}
 				<li><button class="button-cart"><img src="{{asset('images/cart.svg')}}"></button></li>
 			</ul>
 		</div>

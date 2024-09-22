@@ -18,7 +18,12 @@ class HomeController extends Controller
     public function viewHome(){
         return view('home.index');
     }
-
+    public function viewLogin(){
+        return view('home.login');
+    }
+    public function viewRegister(){
+        return view('home.register');
+    }
     public function viewBook(){
         $books = $this->bookService->getPaginateBookDTO(Book::getAll(),10);
         return view('home.book')->with('books',$books);

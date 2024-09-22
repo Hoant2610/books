@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Broadcast;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Customer\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Customer\AddressController;
@@ -29,7 +30,8 @@ use App\Http\Controllers\Customer\AccountController as CustomerAccountController
 */
 
 Route::get('/', [HomeController::class,'viewHome'])->name('index');
-
+Route::get('/login', [HomeController::class, 'viewLogin']);
+Route::get('/register', [HomeController::class, 'viewRegister']);
 Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
@@ -59,9 +61,7 @@ Route::middleware(['auth'])->group(function () {
     // Broadcast::routes();
     Route::prefix('admin')->group(function () {
         Route::middleware(['role:admin'])->group(function () {
-            Route::get('/dashboard', function () {
-                return view('admin.dashboard');
-            })->name('admin-home');
+            Route::get('/dashboard', [AdminController::class,'viewAdmin'])->name('admin-home');
             Route::get('/accounts', [AccountController::class,"viewAccounts"]);
             Route::get('/account/detail/id={user_id}', [AccountController::class,"viewAccountDetail"]);
             Route::get('/books', [BookController::class,"viewBooks"]);
@@ -77,10 +77,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/upload-image',[BookController::class,'uploadImage']);
             Route::post('/change-thumbnail',[BookController::class,'changeThumbnail']);
             Route::get('/order', [OrderController::class,'showOrderView']);
+            Route::put('/order', [OrderController::class,'updateStatusOrder']);
             Route::post('/chat', [ChatController::class,"addAdminMessage"]);
             Route::get('/chat', [ChatController::class,"viewChat"]);
             Route::get('/conversation', [ChatController::class,"getCustomerConversationByUserId"]);
             Route::get('/conversations', [ChatController::class,"getUserChatDTOs"]);
+            Route::get('/revenue', [AdminController::class,"getRevenueByYear"]);
+            Route::get('/soldQuantity', [AdminController::class,"getSoldQuantityByYear"]);
         });
     });
 });

@@ -23,6 +23,6 @@ class OrderDetailRepository
         }
     }
     public function getAllOrderDetail(){
-        return OrderDetail::paginate(1);
+        return OrderDetail::paginate(10);
     }
 }

@@ -34,7 +34,7 @@ class UserController extends Controller
             }
         }
         return back()->withErrors([
-            'error' => 'Thông tin đăng nhập không chính xác.',
+            'error' => 'Invalid username or password!',
         ])->withInput($request->only('email'));
         }
         catch(Exception $e){
